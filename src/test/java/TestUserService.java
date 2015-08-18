@@ -4,8 +4,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.anson.model.Users;
 import com.anson.service.UserService;
+import com.anson.user.model.Users;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

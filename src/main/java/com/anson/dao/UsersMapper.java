@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.anson.model.Users;
+import com.anson.user.model.Users;
 
 @CacheNamespace
 public interface UsersMapper {

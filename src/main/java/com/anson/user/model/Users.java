@@ -1,4 +1,4 @@
-package com.anson.model;
+package com.anson.user.model;
 
 import java.io.Serializable;
 import java.util.Date;

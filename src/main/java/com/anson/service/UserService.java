@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.anson.dao.UsersMapper;
-import com.anson.model.Users;
 import com.anson.service.interfaces.IUserService;
+import com.anson.user.model.Users;
 
 import redis.clients.jedis.Jedis;
 
