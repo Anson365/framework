@@ -23,7 +23,6 @@ public class UserService implements IUserService {
 	private Jedis jedis;
 	
 	
-	@SuppressWarnings("resource")
 	@Cacheable
 	public Users getUserById(long id) {
 		Users user = userMapper.selectByPrimaryKey(id);
@@ -39,6 +38,7 @@ public class UserService implements IUserService {
 		String value = new Date().toString();
 		jedis.set(user.getId()+"", value);
 		System.out.println(value);
+		jedis.del(user.getId()+"");
 		jedis.expire(user.getId()+"", 30);
 		return userMapper.updateByPrimaryKey(user);
 	}

@@ -12,5 +12,6 @@
         
         
         <context:component-scan base-package="com.anson.service"/>
+        <context:component-scan base-package="com.anson.nosql"/>
              
 </beans>
