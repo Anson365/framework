@@ -1,6 +1,7 @@
 package com.anson.service;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -16,16 +17,17 @@ import redis.clients.jedis.Jedis;
 @Service("userService")
 @Transactional(readOnly=true)
 public class UserService implements IUserService {
-	
+	@Autowired
 	private UsersMapper userMapper;
 	@Autowired
 	private Jedis jedis;
+	
 	
 	@SuppressWarnings("resource")
 	@Cacheable
 	public Users getUserById(long id) {
 		Users user = userMapper.selectByPrimaryKey(id);
-		Jedis jedis = new Jedis("localhost",6379);
+//		jedis = new Jedis("localhost",6379);
 		String value = jedis.get(id+"");
 		System.out.println(value);
 		return user;
@@ -41,13 +43,14 @@ public class UserService implements IUserService {
 		return userMapper.updateByPrimaryKey(user);
 	}
 	
-	public UsersMapper getUserMapper() {
-		return userMapper;
-	}
-	
-	@Autowired
-	public void setUserMapper(UsersMapper userMapper) {
-		this.userMapper = userMapper;
+	@Transactional(readOnly=false)
+	public String signUp(Users user) {
+		int id = userMapper.insert(user);
+		UUID uuid = UUID.randomUUID();
+		String token = uuid.toString();
+		jedis.set(token	, String.valueOf(id));
+		jedis.expire(token, 60*60*24*7);
+		return token;
 	}
 	
 }

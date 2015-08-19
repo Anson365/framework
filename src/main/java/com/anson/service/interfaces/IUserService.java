@@ -5,5 +5,7 @@ import com.anson.user.model.Users;
 public interface IUserService {
 	public Users getUserById(long id);
 	
+	public String signUp(Users user);
+	
 	public int updateUserById(Users user);
 }

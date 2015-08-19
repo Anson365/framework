@@ -1,6 +1,7 @@
 package com.anson.dao;
 
 import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -9,7 +10,7 @@ import com.anson.user.model.Users;
 @CacheNamespace
 public interface UsersMapper {
     int deleteByPrimaryKey(Long id);
-
+    @Insert(value=" insert into users(username,password,phonenumber) values(#{username},#{password},#{phonenumber})")
     int insert(Users record);
 
     int insertSelective(Users record);
