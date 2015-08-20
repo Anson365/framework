@@ -2,16 +2,19 @@ package com.anson.dao;
 
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.anson.nosql.mybatiscache.MybatisCache;
 import com.anson.user.model.Users;
 
-@CacheNamespace
+@CacheNamespace(implementation=MybatisCache.class)
 public interface UsersMapper {
     int deleteByPrimaryKey(Long id);
     @Insert(value=" insert into users(username,password,phonenumber) values(#{username},#{password},#{phonenumber})")
-    int insert(Users record);
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id") 
+    long insert(Users record);
 
     int insertSelective(Users record);
     

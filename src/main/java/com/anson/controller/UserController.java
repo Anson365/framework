@@ -28,7 +28,7 @@ import com.anson.util.MD5Parse;
 @RequestMapping("/users")
 public class UserController {
 	protected final Logger logger = Logger.getLogger(getClass());
-	public final static int controllerCode = 1; //controllerCodeÊ¶±ðÃ¿Ò»¸öcontrollerµÄÎ¨Ò»±êÊ¶·û£¬Òì³£Ê±Ê¹ÓÃ
+	public final static int controllerCode = 1; //controllerCodeÊ¶ï¿½ï¿½Ã¿Ò»ï¿½ï¿½controllerï¿½ï¿½Î¨Ò»ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ì³£Ê±Ê¹ï¿½ï¿½
 	
 	@Autowired
 	private IUserService userService;
@@ -47,9 +47,9 @@ public class UserController {
 		System.out.println(password);
 		System.out.println(userName);
 		if(phoneNumber==null||!phoneNumber.matches("\\d{11}")){
-			throw new IllegalParameterException("ÊäÈëµç»°ºÅÂë¸ñÊ½´íÎó£¡");
+			throw new IllegalParameterException("ï¿½ï¿½ï¿½ï¿½ç»°ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½");
 		}
-		Users user = new Users(null,userName, phoneNumber,MD5Parse.parseStr2md5(password),null);
+		Users user = new Users(0L,userName, phoneNumber,MD5Parse.parseStr2md5(password),null);
 		String token = userService.signUp(user);
 		
 		return token;
@@ -70,17 +70,17 @@ public class UserController {
 	public String updateUserInfo(@PathVariable long id){
 		System.out.println("id");
 		Users user = new Users(1L,"hahaha","12345678901","asdf",new Date());
-		int user1 = userService.updateUserById(user);
+		long user1 = userService.updateUserById(user);
 		System.out.println(JSON.toJSONString(user1));
 		return "index";
 	}
 	
-	@ExceptionHandler
-	@ResponseBody
-	public BusinessExceptionModel exceptionHandler(Exception e,HttpServletRequest request, HttpServletResponse response ){
-		logger.error(e);
-		BusinessExceptionModel be =  new BusinessExceptionModel (101,e.getMessage());
-		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-		return be;
-	}
+//	@ExceptionHandler
+//	@ResponseBody
+//	public BusinessExceptionModel exceptionHandler(Exception e,HttpServletRequest request, HttpServletResponse response ){
+//		logger.error(e);
+//		BusinessExceptionModel be =  new BusinessExceptionModel (101,e.getMessage());
+//		response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+//		return be;
+//	}
 }

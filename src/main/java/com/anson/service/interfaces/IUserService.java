@@ -7,5 +7,5 @@ public interface IUserService {
 	
 	public String signUp(Users user);
 	
-	public int updateUserById(Users user);
+	public long updateUserById(Users user);
 }

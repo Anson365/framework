@@ -11,4 +11,9 @@ public class TestMD5Parse {
 		String result = MD5Parse.parseStr2md5(password);
 		System.out.println(result);
 	}
+	
+	@Test
+	public void test(){
+		System.out.println(String.valueOf("hello world"));
+	}
 }

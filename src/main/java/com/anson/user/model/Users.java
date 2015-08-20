@@ -7,7 +7,7 @@ public class Users implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private long id;
 
     private String username;
 
@@ -22,7 +22,7 @@ public class Users implements Serializable{
 	}
     
 
-    public Users(Long id, String username, String phonenumber, String password, Date createdat) {
+    public Users(long id, String username, String phonenumber, String password, Date createdat) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -32,11 +32,11 @@ public class Users implements Serializable{
 	}
 
 
-	public Long getId() {
+	public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
