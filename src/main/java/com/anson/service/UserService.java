@@ -23,8 +23,8 @@ public class UserService implements IUserService {
 	private UsersMapper userMapper;
 	@Autowired
 	private RedisUtil redisUtil;
-	@Autowired
-	private JedisPool jedisPool;
+//	@Autowired
+//	private JedisPool jedisPool;
 	
 	
 	@Cacheable
@@ -40,13 +40,9 @@ public class UserService implements IUserService {
 	
 	@Transactional(readOnly=false)
 	public long updateUserById(Users user) {
-		// TODO Auto-generated method stub
-		Jedis jedis = jedisPool.getResource();
+		// TODO Auto-generated method stu
 		String value = new Date().toString();
-		jedis.set(user.getId()+"", value);
 		System.out.println(value);
-//		jedis.del(user.getId()+"");
-		jedis.expire(user.getId()+"", 30);
 		return userMapper.updateByPrimaryKey(user);
 	}
 	

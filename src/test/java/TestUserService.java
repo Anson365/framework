@@ -1,31 +1,25 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.anson.service.UserService;
+import com.anson.service.interfaces.IUserService;
 import com.anson.user.model.Users;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-mybatis.xml"})
+@ContextConfiguration(locations={"classpath:spring.xml","classpath:spring-mybatis.xml","classpath:spring-redis.xml"})
 public class TestUserService {
 	
-	private UserService userService;
+	@Autowired
+	private IUserService userService;
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
 	@Test
 	public void testGetUserById(){
-		Users user = userService.getUserById(1);
 		
+		Users user = userService.getUserById(1);
 		System.out.println(JSON.toJSONString(user));
 	}
 	

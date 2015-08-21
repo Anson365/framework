@@ -6,7 +6,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.anson.util.SerializeUtil;
 
