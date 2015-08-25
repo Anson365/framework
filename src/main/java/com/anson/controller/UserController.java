@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.anson.service.interfaces.IUserService;
+import com.anson.user.exception.BusinessExceptionModel;
 import com.anson.user.exception.IllegalParameterException;
-import com.anson.user.model.BusinessExceptionModel;
 import com.anson.user.model.Users;
 import com.anson.util.MD5Parse;
 

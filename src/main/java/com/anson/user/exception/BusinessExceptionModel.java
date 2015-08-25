@@ -1,4 +1,4 @@
-package com.anson.user.model;
+package com.anson.user.exception;
 
 public class BusinessExceptionModel {
 	private int code;
