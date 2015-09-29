@@ -5,11 +5,11 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.mybatis.caches.redis.RedisCache;
+import org.mybatis.caches.memcached.MemcachedCache;
 
 import com.anson.user.model.Users;
 
-@CacheNamespace/*(implementation=RedisCache.class)*/
+@CacheNamespace(implementation=MemcachedCache.class)
 public interface UsersMapper {
 	
 	@Results(value={

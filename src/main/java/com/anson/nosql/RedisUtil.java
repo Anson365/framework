@@ -3,9 +3,10 @@ package com.anson.nosql;
 import java.util.UUID;
 
 import org.apache.log4j.Logger;
-import org.mybatis.caches.redis.SerializeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.anson.util.SerializeUtil;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

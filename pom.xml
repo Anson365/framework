@@ -190,11 +190,15 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>org.mybatis.caches</groupId>
-		    <artifactId>mybatis-redis</artifactId>
-		    <version>1.0.0-beta1</version>
-		</dependency>
-		
+	        <groupId>org.mybatis.caches</groupId>
+	        <artifactId>mybatis-memcached</artifactId>
+	        <version>1.0.0</version>
+	    </dependency>
+		<dependency>
+	        <groupId>commons-codec</groupId>
+	        <artifactId>commons-codec</artifactId>
+	        <version>1.8</version>
+	    </dependency>
     </dependencies>
 
   <build>
